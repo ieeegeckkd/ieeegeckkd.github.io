@@ -1,27 +1,14 @@
-/* @import url("https://fonts.googleapis.com/css?family=Arvo"); */
-
-
 .gallery {
     display: block;
     padding: 2rem;
     max-width: 1027px;
     margin: 0 auto;
-    /* Center the gallery */
     scroll-margin-top: 80px;
-    /* Adjust this value based on your navbar height */
-    
 }
-
 
 @media screen and (min-width: 768px) {
     .gallery {
         padding: 4rem;
-    }
-}
-
-@supports (display: grid) {
-    .gallery {
-        display: block;
     }
 }
 
@@ -31,79 +18,46 @@
 }
 
 .gallery .grid {
-    display: grid;
-    grid-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 150px;
-    grid-auto-flow: row dense;
+    columns: 2;
+    column-gap: 30px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+    .gallery .grid {
+        columns: 1;
+    }
 }
 
 .gallery .item {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 30px;
+    break-inside: avoid;
     background: rgba(255, 255, 255, 0.1);
-    /* More transparent background */
-    backdrop-filter: blur(10px);
-    /* Increased blur for glass effect */
+    /* backdrop-filter: blur(10px); */
     border: 1px solid rgba(255, 255, 255, 0.2);
-    /* Subtle border */
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    /* Softer shadow */
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
     overflow: hidden;
 }
 
-
-
 .gallery .item img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    display: block;
     object-fit: cover;
     transition: opacity 0.3s ease-in-out;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-.gallery .item:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    /* background-color: rgba(0, 0, 0, 0.3); */
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 15px;
-}
-
 .gallery .item:hover {
-    transform: scale(1.05);
-}
-
-.gallery .item:hover:after {
-    opacity: 1;
-}
-
-.gallery .item--medium {
-    grid-row-end: span 2;
-}
-
-.gallery .item--large {
-    grid-row-end: span 3;
-}
-
-.gallery .item--full {
-    grid-column-end: auto;
-}
-
-@media screen and (min-width: 768px) {
-    .gallery .item--full {
-        grid-column: 1/-1;
-        grid-row-end: span 2;
-    }
+    transform: scale(1.02);
 }
 
 .gallery .item__details {
@@ -111,15 +65,11 @@
     z-index: 1;
     padding: 15px;
     color: #000000;
-    /* Change text color for contrast */
     background: rgba(255, 255, 255, 0.2);
-    /* More transparent */
-    /* text-transform: lowercase; */
     letter-spacing: 1px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-
 
 .gallery .item__date {
     display: block;
